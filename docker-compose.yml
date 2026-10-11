@@ -1,0 +1,16 @@
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    container_name: blogify-db
+    environment:
+      POSTGRES_USER: blogify
+      POSTGRES_PASSWORD: blogify
+      POSTGRES_DB: blogify
+    ports:
+      - "5440:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
